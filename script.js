@@ -1,3 +1,10 @@
+// 🌐 Lucide Iconsの自動適用
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+});
+
 // FAQの開閉制御
 function toggleFaq(el) {
   const item = el.closest('.faq-item');
@@ -19,7 +26,10 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 // ヘッダーのスクロール影の制御
 window.addEventListener('scroll', () => {
-  document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 40);
+  const header = document.getElementById('site-header');
+  if (header) {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }
 }, { passive: true });
 
 // スマホナビゲーションの開閉制御
