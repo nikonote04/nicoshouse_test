@@ -1,0 +1,969 @@
+/* ======================
+   TOKENS
+   ====================== */
+:root {
+  --terra:    #c07455;
+  --terra-lt: #d8967a;
+  --terra-dk: #9a5a3d;
+  --green:    #6b8c6e;
+  --green-lt: #8faa91;
+  --green-dk: #4e6b51;
+  --offwhite: #faf8f4;
+  --paper:    #f2ede5;
+  --paper-dk: #e4dbd0;
+  --linen:    #d9cebc;
+  --brown:    #3d2b1f;
+  --brown-lt: #6b4f3a;
+  --text:     #3a2f27;
+  --text-md:  #6b5a4e;
+  --text-lt:  #9a8578;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  background: var(--offwhite);
+  color: var(--text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ======================
+   HEADER
+   ====================== */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--offwhite);
+  border-bottom: 1px solid var(--paper-dk);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 2.5rem;
+  transition: box-shadow 0.3s;
+}
+header.scrolled {
+  box-shadow: 0 2px 16px rgba(61,43,31,0.08);
+}
+.logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  background: var(--terra);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+.logo-ja {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--brown);
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+}
+.logo-en {
+  font-size: 0.62rem;
+  color: var(--text-lt);
+  letter-spacing: 0.2em;
+  font-weight: 300;
+}
+
+/* 💻 PC用メニューの標準スタイル */
+.pc-nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.pc-nav a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: var(--text-md);
+  letter-spacing: 0.06em;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.pc-nav a:hover { color: var(--terra); }
+.nav-reserve {
+  background: var(--terra);
+  color: white !important;
+  padding: 0.5rem 1.3rem;
+  border-radius: 2px;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.1em;
+  transition: background 0.2s !important;
+}
+.nav-reserve:hover { background: var(--terra-dk) !important; }
+
+/* ❌ PC画面ではスマホ用メニューとハンバーガーボタンを完全に非表示 */
+#site-nav {
+  display: none;
+}
+.menu-trigger {
+  display: none;
+}
+
+/* ======================
+   HERO
+   ====================== */
+.hero {
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  /* 🎨 ヒーロー画像のローカル参照（未アップロード時のためにUnsplashをフォールバックに指定） */
+  background:
+    linear-gradient(to right, rgba(250,248,244,0.92) 38%, rgba(250,248,244,0.3) 100%),
+    url('./images/hero-bg.jpg') center/cover no-repeat,
+    url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1800&q=80') center/cover no-repeat;
+}
+.hero-content {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  width: 100%;
+}
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--paper);
+  border: 1px solid var(--linen);
+  border-radius: 2px;
+  font-size: 0.72rem;
+  color: var(--text-md);
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.9rem;
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-size: clamp(1.9rem, 4vw, 3.2rem);
+  font-weight: 500;
+  color: var(--brown);
+  line-height: 1.7;
+  letter-spacing: 0.06em;
+  margin-bottom: 1.2rem;
+}
+.hero h1 span {
+  color: var(--terra);
+  border-bottom: 2px solid var(--terra-lt);
+}
+.hero-desc {
+  font-size: 0.9rem;
+  color: var(--text-md);
+  line-height: 2;
+  margin-bottom: 2rem;
+  font-weight: 300;
+  max-width: 400px;
+}
+.hero-btns {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.btn-fill {
+  background: var(--terra);
+  color: white;
+  text-decoration: none;
+  padding: 0.85rem 2rem;
+  font-size: 0.83rem;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  transition: background 0.2s;
+  display: inline-block;
+}
+.btn-fill:hover { background: var(--terra-dk); }
+.btn-line {
+  border: 1.5px solid var(--linen);
+  color: var(--text-md);
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.83rem;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+  display: inline-block;
+}
+.btn-line:hover { border-color: var(--terra); color: var(--terra); }
+
+.hero-chips {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+.chip {
+  background: white;
+  border: 1px solid var(--linen);
+  border-radius: 20px;
+  font-size: 0.72rem;
+  color: var(--text-md);
+  padding: 0.3rem 0.85rem;
+  letter-spacing: 0.06em;
+}
+
+/* ======================
+   SECTIONS
+   ====================== */
+section { padding: 5.5rem 0; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+.sec-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--terra);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+.sec-title {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 500;
+  color: var(--brown);
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  margin-bottom: 1.2rem;
+}
+.sec-body {
+  font-size: 0.88rem;
+  color: var(--text-md);
+  line-height: 2.1;
+  font-weight: 300;
+}
+.divider {
+  width: 32px;
+  height: 2px;
+  background: var(--terra-lt);
+  border-radius: 1px;
+  margin: 1rem 0 1.5rem;
+}
+
+/* ======================
+   CONCEPT
+   ====================== */
+.concept { background: var(--paper); }
+.concept-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+.concept-imgs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.75rem;
+}
+.concept-imgs img:first-child {
+  grid-column: 1 / 3;
+  width: 100%; height: 240px;
+  object-fit: cover;
+}
+.concept-imgs img:nth-child(2) {
+  width: 100%; height: 140px;
+  object-fit: cover;
+}
+.concept-imgs img:nth-child(3) {
+  width: 100%; height: 140px;
+  object-fit: cover;
+}
+.concept-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.ctag {
+  background: white;
+  border: 1px solid var(--linen);
+  border-radius: 2px;
+  font-size: 0.73rem;
+  color: var(--text-md);
+  padding: 0.3rem 0.8rem;
+  letter-spacing: 0.06em;
+}
+
+/* ======================
+   STORY — オーナーについて
+   ====================== */
+.story { background: var(--offwhite); }
+.story-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+.story-img {
+  position: relative;
+}
+.story-img img {
+  width: 100%; height: 400px;
+  object-fit: cover;
+  display: block;
+}
+.story-img::after {
+  content: '"にこ" との旅で気づいたこと';
+  position: absolute;
+  bottom: -1px;
+  left: 0; right: 0;
+  background: var(--terra);
+  color: white;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  padding: 0.75rem 1.2rem;
+  font-weight: 300;
+}
+.story-quote {
+  border-left: 3px solid var(--terra-lt);
+  padding-left: 1.2rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text-md);
+  line-height: 2;
+  font-style: normal;
+  font-weight: 300;
+}
+
+/* ======================
+   FEATURES
+   ====================== */
+.features { background: var(--paper); }
+.features-hd { text-align: center; margin-bottom: 3.5rem; }
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.feat-card {
+  background: white;
+  padding: 2rem 1.8rem;
+  border: 1px solid var(--paper-dk);
+  border-radius: 4px;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.feat-card:hover {
+  box-shadow: 0 4px 20px rgba(61,43,31,0.08);
+  border-color: var(--linen);
+}
+.feat-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.feat-card h3 {
+  font-size: 0.93rem;
+  font-weight: 500;
+  color: var(--brown);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+}
+.feat-card p {
+  font-size: 0.8rem;
+  color: var(--text-md);
+  line-height: 1.9;
+  font-weight: 300;
+}
+
+/* ======================
+   LABO
+   ====================== */
+.labo { background: var(--offwhite); }
+.labo-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  align-items: start;
+}
+.labo-img img {
+  width: 100%; height: 460px;
+  object-fit: cover; display: block;
+}
+.labo-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.labo-item {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--paper-dk);
+}
+.labo-item:last-child { border-bottom: none; padding-bottom: 0; }
+.labo-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.labo-item h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--brown);
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.04em;
+}
+.labo-item p {
+  font-size: 0.8rem;
+  color: var(--text-md);
+  line-height: 1.9;
+  font-weight: 300;
+}
+
+/* ======================
+   ROOMS
+   ====================== */
+.rooms { background: var(--paper); }
+.rooms-hd { margin-bottom: 3rem; }
+.rooms-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.room-card {
+  background: white;
+  border: 1px solid var(--paper-dk);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.room-card img {
+  width: 100%; height: 220px;
+  object-fit: cover; display: block;
+  transition: transform 0.5s ease;
+}
+.room-card:hover img { transform: scale(1.03); }
+.room-body {
+  padding: 1.3rem 1.5rem 1.5rem;
+}
+.room-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--terra);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  font-weight: 400;
+}
+.room-body h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--brown);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.4rem;
+}
+.room-body p {
+  font-size: 0.78rem;
+  color: var(--text-md);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+/* ======================
+   PRICE
+   ====================== */
+.price { background: var(--offwhite); }
+.price-hd { text-align: center; margin-bottom: 0.75rem; }
+.price-sub {
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-lt);
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.price-card {
+  background: white;
+  border: 1px solid var(--paper-dk);
+  border-radius: 4px;
+  padding: 2rem 1.8rem;
+  text-align: center;
+}
+.price-card.main {
+  background: var(--terra);
+  border-color: var(--terra);
+}
+.price-card.main * { color: white !important; }
+.price-plan {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--brown);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.price-amount {
+  font-size: 2.4rem;
+  font-weight: 300;
+  color: var(--terra);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.price-card.main .price-amount { color: white; }
+.price-unit {
+  font-size: 0.7rem;
+  color: var(--text-lt);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+.price-list {
+  list-style: none;
+  text-align: left;
+}
+.price-list li {
+  font-size: 0.78rem;
+  color: var(--text-md);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--paper);
+  font-weight: 300;
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+.price-list li::before {
+  content: '✓';
+  color: var(--green);
+  flex-shrink: 0;
+}
+.price-card.main .price-list li {
+  border-bottom-color: rgba(255,255,255,0.2);
+}
+.price-note {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.74rem;
+  color: var(--text-lt);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* ======================
+   AREA
+   ====================== */
+.area { background: var(--paper); }
+.area-hd { margin-bottom: 3rem; }
+.area-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.area-card {
+  background: white;
+  border: 1px solid var(--paper-dk);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.area-card img {
+  width: 100%; height: 160px;
+  object-fit: cover; display: block;
+  transition: transform 0.5s;
+}
+.area-card:hover img { transform: scale(1.04); }
+.area-body { padding: 1rem 1.1rem 1.2rem; }
+.area-dist {
+  font-size: 0.68rem;
+  color: var(--terra);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.3rem;
+}
+.area-body h4 {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--brown);
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.04em;
+}
+.area-body p {
+  font-size: 0.75rem;
+  color: var(--text-md);
+  line-height: 1.8;
+  font-weight: 300;
+}
+.area-pet {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.68rem;
+  color: var(--green-dk);
+  background: rgba(107,140,110,0.1);
+  border-radius: 2px;
+  padding: 0.2rem 0.6rem;
+  letter-spacing: 0.06em;
+}
+
+/* ======================
+   ACCESS
+   ====================== */
+.access { background: var(--offwhite); }
+.access-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  align-items: start;
+}
+.access-rows { margin-top: 1.8rem; }
+.access-row {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--paper-dk);
+}
+.access-row:last-child { border-bottom: none; }
+.acc-label {
+  min-width: 70px;
+  font-size: 0.7rem;
+  color: var(--terra);
+  letter-spacing: 0.12em;
+  padding-top: 0.2rem;
+  font-weight: 400;
+  flex-shrink: 0;
+}
+.acc-val {
+  font-size: 0.82rem;
+  color: var(--text-md);
+  line-height: 1.9;
+  font-weight: 300;
+}
+.acc-val a { color: var(--terra); text-decoration: none; }
+.access-map { background: var(--paper); }
+.access-map iframe {
+  width: 100%; height: 340px;
+  border: none; display: block;
+  border: 1px solid var(--paper-dk);
+}
+
+/* ======================
+   FAQ
+   ====================== */
+.faq { background: var(--paper); }
+.faq-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+.faq-hd { text-align: center; margin-bottom: 3rem; }
+.faq-item {
+  border-bottom: 1px solid var(--paper-dk);
+}
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+  cursor: pointer;
+  gap: 1rem;
+  user-select: none;
+}
+.faq-q-text {
+  font-size: 0.88rem;
+  color: var(--brown);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+}
+.faq-q:hover .faq-q-text { color: var(--terra); }
+.faq-icon {
+  width: 24px; height: 24px;
+  border: 1.5px solid var(--linen);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--terra);
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: transform 0.3s, background 0.3s, border-color 0.3s;
+}
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--terra);
+  color: white;
+  border-color: var(--terra);
+}
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+  font-size: 0.82rem;
+  color: var(--text-md);
+  line-height: 2;
+  font-weight: 300;
+}
+.faq-item.open .faq-a {
+  max-height: 400px;
+  padding-bottom: 1.2rem;
+}
+
+/* ======================
+   RESERVE
+   ====================== */
+.reserve {
+  background: var(--brown);
+  padding: 5rem 2.5rem;
+  text-align: center;
+}
+.reserve-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--terra-lt);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.reserve h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 500;
+  color: white;
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+.reserve p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 2;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+.reserve-btns {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.btn-white {
+  background: white;
+  color: var(--terra-dk);
+  text-decoration: none;
+  padding: 0.9rem 2.5rem;
+  font-size: 0.83rem;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  transition: background 0.2s;
+  display: inline-block;
+  font-weight: 500;
+}
+.btn-white:hover { background: var(--paper); }
+.btn-line-w {
+  border: 1.5px solid rgba(255,255,255,0.4);
+  color: white;
+  text-decoration: none;
+  padding: 0.9rem 1.8rem;
+  font-size: 0.83rem;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  transition: border-color 0.2s;
+  display: inline-block;
+}
+.btn-line-w:hover { border-color: rgba(255,255,255,0.8); }
+
+/* ======================
+   FOOTER
+   ====================== */
+footer {
+  background: #2a1e14;
+  padding: 3.5rem 2.5rem 2rem;
+  text-align: center;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.8rem;
+}
+.footer-logo-mark {
+  width: 32px; height: 32px;
+  background: var(--terra);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+.footer-logo-name {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.15em;
+}
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+}
+.footer-nav a {
+  text-decoration: none;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.38);
+  letter-spacing: 0.1em;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: rgba(255,255,255,0.7); }
+.footer-info {
+  font-size: 0.74rem;
+  color: rgba(255,255,255,0.28);
+  line-height: 2;
+  font-weight: 300;
+}
+.footer-info a {
+  color: rgba(255,255,255,0.28);
+  text-decoration: none;
+  display: inline-block;
+}
+.footer-copy {
+  margin-top: 1.8rem;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: 0.1em;
+}
+
+/* ======================
+   SCROLL REVEAL
+   ====================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ======================
+   🔔 TOAST NOTIFICATION (コピートースト通知)
+   ====================== */
+.copy-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--brown);
+  color: white;
+  padding: 0.8rem 1.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  z-index: 1000;
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  box-shadow: 0 4px 20px rgba(61,43,31,0.2);
+  pointer-events: none;
+}
+.copy-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ======================
+   📱 MOBILE (768px以下) メディアクエリ
+   ====================== */
+@media (max-width: 768px) {
+  header { padding: 0.8rem 1.2rem; }
+  
+  /* 📱 スマホ時はPC用横並びメニューを完全に消す */
+  .pc-nav {
+    display: none !important;
+  }
+  
+  /* 📱 スマホ専用メニュー（ハンバーガーで開閉する側）のスタイル */
+  #site-nav {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 60px; /* ヘッダーの高さ */
+    left: 0; right: 0;
+    background: var(--offwhite);
+    border-bottom: 1px solid var(--paper-dk);
+    padding: 1.5rem 2rem 2.5rem;
+    gap: 1.5rem;
+    transform: translateY(-150%); /* 通常時は上に隠す */
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 99;
+    box-shadow: 0 10px 20px rgba(61,43,31,0.05);
+  }
+  
+  /* メニューが開いた時のクラス */
+  #site-nav.is-open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  #site-nav a {
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--paper);
+    width: 100%;
+  }
+  .nav-reserve {
+    text-align: center;
+    margin-top: 0.5rem;
+    padding: 0.8rem !important;
+  }
+
+  /* 📱 スマホ画面でのみハンバーガーボタンを表示 */
+  .menu-trigger {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px; height: 20px;
+    background: none; border: none;
+    cursor: pointer; padding: 0; z-index: 101;
+  }
+  .menu-trigger span {
+    width: 100%; height: 2px;
+    background-color: var(--brown);
+    transition: transform 0.3s, opacity 0.3s;
+    transform-origin: left center;
+  }
+  /* 三本線の変形アニメーション */
+  .menu-trigger.is-active span:nth-child(1) { transform: rotate(45deg) translate(2px, -2px); }
+  .menu-trigger.is-active span:nth-child(2) { opacity: 0; }
+  .menu-trigger.is-active span:nth-child(3) { transform: rotate(-45deg) translate(2px, 2px); }
+
+  /* 📱 レイアウトのレスポンシブ調整 */
+  .hero-bg {
+    background:
+      linear-gradient(to bottom, rgba(250,248,244,0.85) 50%, rgba(250,248,244,0.5) 100%),
+      url('./images/hero-bg.jpg') center/cover,
+      url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=80') center/cover;
+  }
+  .hero-content { padding: 0 1.2rem; }
+  .concept-inner, .story-inner, .labo-inner, .access-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .features-grid, .rooms-grid, .price-grid, .area-grid { grid-template-columns: 1fr; }
+  section { padding: 3.5rem 0; }
+  .container { padding: 0 1.2rem; }
+  .faq-inner { padding: 0 1.2rem; }
+
+  /* 📱 スマホ時のマップ iframe の高さを少し低くして操作・スクロールしやすく調整 */
+  .access-map iframe {
+    height: 260px;
+  }
+  /* 📱 電話、メール、住所のタッチ領域を広くしてタップミスを防ぐ */
+  .access-row .acc-val a,
+  .footer-info a {
+    padding: 0.3rem 0.5rem;
+    margin: -0.3rem -0.5rem;
+    border-radius: 4px;
+    background: rgba(192, 116, 85, 0.05);
+  }
+}
