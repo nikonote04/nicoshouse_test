@@ -16,14 +16,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- 📈 【SEO改善】検索表示を意識した最重要タイトル・ディスクリプション -->
-<title>秩父の一棟貸しペット共生ヴィラ「にこの家」｜犬・猫・小動物と添い寝OKの宿</title>
+<title>秩父の一棟貸しペット共生ヴィラ「にこの家」｜犬・猫・小動物と添い寝OK of の宿</title>
 <meta name="description" content="東京から約90分の秩父市にあるペットと泊まれる一棟貸し宿「にこの家」。ケージ不要、布団での立ち入り・添い寝制限なし。犬・猫はもちろん、うさぎ・フェレットなど多種多様なペット家族を歓迎します。無料プライベートドッグラン完備。">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-<!-- Lucide Icons -->
+<!-- Lucide Icons (絵文字の代わりとなる高品質なベクターアイコン) -->
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <!-- 🎨 外部CSSファイル -->
@@ -41,7 +41,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- HEADER -->
 <header id="site-header">
   <a href="#" class="logo">
-    <div class="logo-mark">
+    <!-- 🖼️ オリジナルロゴ画像（アップロードすると自動的に表示されます。ない場合は肉球アイコンをフォールバック表示） -->
+    <img src="./images/logo.png" alt="にこの家 ロゴ" class="logo-img" onerror="this.style.display='none'; document.getElementById('fallback-logo-mark').style.display='flex'">
+    <div class="logo-mark" id="fallback-logo-mark">
       <i data-lucide="paw-print"></i>
     </div>
     <div class="logo-text">
@@ -88,7 +90,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-      <div class="hero-tag">秩父市 · 一棟貸しペット共生ヴィラ · 添い寝OK</div>
+      <div class="hero-tag">
+        <i data-lucide="paw-print" class="tag-icon"></i> 秩父市 · 一棟貸しペット共生ヴィラ · 添い寝OK
+      </div>
       <!-- 📈 【SEO改善】最重要キーワードを網羅したh1タグ -->
       <h1>秩父で大切なペットと、<br><span>わが家のように</span>過ごせる一棟貸しの宿。</h1>
       <p class="hero-desc">
@@ -116,16 +120,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="concept" id="concept">
     <div class="container">
       <div class="concept-inner">
-        <div class="concept-images concept-imgs reveal">
-          <div class="image-wrapper main-img-wrapper">
-            <img src="./images/concept-main.jpg" alt="にこの家のベッドの上で、愛犬と一緒に添い寝をしてくつろぐオーナー夫婦" onerror="this.src='https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=900&q=80'">
-          </div>
-          <div class="image-wrapper sub-img-wrapper">
-            <img src="./images/concept-nico.jpg" alt="にこの家の看板犬、柴犬のニコちゃん" onerror="this.src='https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80'">
-          </div>
-          <div class="image-wrapper doc-img-wrapper" style="display: none;">
-            <img src="./images/concept-dogrun.jpg" alt="ウッドフェンスに囲まれた、にこの家の広々としたプライベートドッグラン" onerror="this.src='https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80'">
-          </div>
+        <div class="concept-imgs reveal">
+          <!-- 📈 【SEO改善】検索エンジンに中身を伝える具体的なalt属性に変更 -->
+          <img src="./images/concept-main.jpg" alt="にこの家のベッドの上で、愛犬と一緒に添い寝をしてくつろぐオーナー夫婦" onerror="this.src='https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=900&q=80'">
+          <img src="./images/concept-nico.jpg" alt="にこの家の看板犬、柴犬のニコちゃん" onerror="this.src='https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80'">
+          <img src="./images/concept-dogrun.jpg" alt="ウッドフェンスに囲まれた、にこの家の広々としたプライベートドッグラン" onerror="this.src='https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80'">
         </div>
         <div class="reveal">
           <p class="sec-eyebrow">About</p>
@@ -216,7 +215,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <i data-lucide="trees" class="feat-lucide"></i>
           </div>
           <h3>羊山公園すぐ近くの好立地</h3>
-          <p>芝桜で有名な羊山公園まで車で約3分。お散歩や、周辺のペット同伴可能な観光・カフェスポットへのアクセスも抜群です。</p>
+          <p>芝桜で有名な羊山公園まで車で約3分。お散歩や、周辺 of ペット同伴可能な観光・カフェスポットへのアクセスも抜群です。</p>
         </div>
         <div class="feat-card reveal">
           <div class="feat-icon-container">
@@ -449,7 +448,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="area-dist">車で約3〜5分（約1.5km）</p>
             <h4>羊山公園</h4>
             <p>芝桜の丘で全国的にも有名。見晴らしの丘からは、武甲山と秩父市街が一望できる絶景のお散歩ルートです。</p>
-            <span class="area-pet">リード着用でわんちゃんお散歩OK</span>
+            <span class="area-pet"><i data-lucide="paw-print" class="pet-inline-icon"></i> リード着用でわんちゃんお散歩OK</span>
           </div>
         </div>
         <div class="area-card reveal">
@@ -459,8 +458,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="area-body">
             <p class="area-dist">車で約3分（約1km）</p>
             <h4>道の駅 ちちぶ</h4>
-            <p>秩父の特産品やお土産、B級グルメが集結するスポット. 外には美味しい立ち食いそばや水汲み場もあります。</p>
-            <span class="area-pet">屋外テラススペース等のみペットOK</span>
+            <p>秩父の特産品やお土産、B級グルメが集結するスポット。外には美味しい立ち食いそばや水汲み場もあります。</p>
+            <span class="area-pet"><i data-lucide="paw-print" class="pet-inline-icon"></i> 屋外テラススペース等のみペットOK</span>
           </div>
         </div>
         <div class="area-card reveal">
@@ -471,7 +470,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="area-dist">車で約5分（約1.8km）</p>
             <h4>doggie cafe SMOOCH</h4>
             <p>ペット愛に溢れる古民家風のドッグカフェ。全犬種・猫ちゃん店内同伴OKで、ヘルシーな犬用メニューも大変人気です。</p>
-            <span class="area-pet">全犬種・猫ちゃんも店内同伴OK</span>
+            <span class="area-pet"><i data-lucide="paw-print" class="pet-inline-icon"></i> 全犬種・猫ちゃんも店内同伴OK</span>
           </div>
         </div>
         <div class="area-card reveal">
@@ -482,7 +481,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="area-dist">車で約15分（約7〜8km）</p>
             <h4>秩父ミューズパーク</h4>
             <p>広大な敷地の中に、約3kmにわたる美しいイチョウ並木道「スカイロード」があります。愛犬との朝夕のお散歩に最適なコースです。</p>
-            <span class="area-pet">リード着用でお散歩OK</span>
+            <span class="area-pet"><i data-lucide="paw-print" class="pet-inline-icon"></i> リード着用でお散歩OK</span>
           </div>
         </div>
         <div class="area-card reveal">
@@ -493,7 +492,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="area-dist">車で約25〜30分（約15km）</p>
             <h4>長瀞・岩畳 ＆ ライン下り</h4>
             <p>美しい自然が織りなす大迫力の「岩畳」の上をリードをつけてのんびりお散歩。川下りのライン下りも、ペット同伴乗船が可能です。</p>
-            <span class="area-pet">岩畳お散歩OK / ライン下りはケージ必要</span>
+            <span class="area-pet"><i data-lucide="paw-print" class="pet-inline-icon"></i> 岩畳お散歩OK / ライン下りはケージ必要</span>
           </div>
         </div>
         <div class="area-card reveal">
@@ -504,7 +503,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p class="area-dist">車で約30分（約16km）</p>
             <h4>宝登山ロープウェイ</h4>
             <p>長瀞観光に人気のロープウェイ。梅や桜など四季折々の花が咲き誇る宝登山山頂へ、小型犬を連れて登ることができます。</p>
-            <span class="area-pet">10kg未満・頭から隠れるハードケージ必要</span>
+            <span class="area-pet"><i data-lucide="paw-print" class="pet-inline-icon"></i> 10kg未満・頭から隠れるハードケージ必要</span>
           </div>
         </div>
       </div>
@@ -620,7 +619,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <div class="footer-logo-mark">
+    <img src="./images/logo.png" alt="にこの家 ロゴ" class="footer-logo-img" onerror="this.style.display='none'; document.getElementById('fallback-footer-logo-mark').style.display='flex'">
+    <div class="footer-logo-mark" id="fallback-footer-logo-mark">
       <i data-lucide="paw-print"></i>
     </div>
     <span class="footer-logo-name">にこの家</span>
@@ -643,7 +643,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="footer-copy">© 2025 にこの家 / nico's house</p>
 </footer>
 
-<!-- ⚙️ 外部JavaScriptファイル -->
+<!-- ⚙️ 外部JavaScriptファイルの読み込み -->
 <script src="script.js"></script>
 </body>
 </html>
