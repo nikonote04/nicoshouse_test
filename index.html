@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>     
+<head>
+<!-- 💡 指摘1: charsetとviewportを最優先に配置 -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- 💡 指摘8: og:localeの設定 -->
+<meta property="og:locale" content="ja_JP">
+
 <!-- =================================================================
      📊 Google Tag Manager (GTM)
      ※GTM-XXXXXXX をご自身のGTMコンテナIDに書き換えてください。
+     💡 指摘1: charsetより後にGTMを移動
 ================================================================== -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -12,19 +19,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-P7N9P9ZC');</script>
 <!-- End Google Tag Manager -->
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- 📈 SEO & OGP (SNSシェア設定) -->
-<title>秩父の一棟貸しペット共生ヴィラ「にこの家」｜犬・猫・小動物と添い寝OKの宿</title>
+<!-- 💡 指摘9: タイトルの文字数を適切に短縮 (27文字) -->
+<title>秩父のペット共生ヴィラ「にこの家」｜犬猫と泊まる一棟貸し</title>
 <meta name="description" content="東京から約90分の秩父市にあるペットと泊まれる一棟貸し宿「にこの家」。ケージ不要、布団での立ち入り・添い寝制限なし。犬・猫はもちろん、うさぎ・フェレットなど多種多様なペット家族を歓迎します。無料プライベートドッグラン完備。">
-<meta property="og:title" content="秩父の一棟貸しペット共生ヴィラ「にこの家」">
+<meta property="og:title" content="秩父のペット共生ヴィラ「にこの家」">
 <meta property="og:description" content="ケージ不要、制限なしでの添い寝OK。犬・猫・小動物とわが家のように過ごせる秩父の一棟貸し宿です。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nikonote04.github.io/nicoshouse/">
 <meta property="og:image" content="https://nikonote04.github.io/nicoshouse/images/og-img.jpg">
 <meta property="og:site_name" content="にこの家 | nico's house">
 <meta name="twitter:card" content="summary_large_image">
+
+<!-- 💡 指摘10: faviconの指定 -->
+<link rel="icon" href="./images/favicon.ico">
+<!-- 💡 指摘3: ヒーロー画像のLCP最適化（プリロード） -->
+<link rel="preload" as="image" href="./images/hero-bg.jpg">
 
 <!-- 🏢 構造化データ (JSON-LD) - 宿泊施設情報 -->
 <script type="application/ld+json">
@@ -33,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "@type": "LodgingBusiness",
   "name": "にこの家 (nico's house)",
   "description": "秩父市にあるペットと泊まれる一棟貸し宿。ケージ不要、添い寝制限なし。",
-  "url": "https://nikonote04.github.io/nicoshouse/",
+  "url": "https://nikonote04.github.io/nicoshouse/", 
   "telephone": "+81-90-3818-8591",
   "address": {
     "@type": "PostalAddress",
@@ -52,7 +61,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 </script>
 
-<!-- ❓ 構造化データ (JSON-LD) - FAQ情報（✨追加） -->
+<!-- ❓ 構造化データ (JSON-LD) - FAQ情報 -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -90,7 +99,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- 🎨 CSS (スタイルをファイル内に統合) -->
 <style>
 /* ======================
    TOKENS
@@ -116,7 +124,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { 
   scroll-behavior: smooth; 
-  /* ✨追加: 固定ヘッダーの高さ分、スクロール位置を調整（アンカーリンクのズレ防止） */
   scroll-padding-top: 70px; 
 }
 body {
@@ -160,8 +167,13 @@ header.scrolled {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
   flex-shrink: 0;
+}
+/* ✨追加：SVG足跡アイコン（ロゴマーク用） */
+.logo-mark svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
 }
 .logo-text {
   display: flex;
@@ -181,7 +193,6 @@ header.scrolled {
   font-weight: 300;
 }
 
-/* 💻 PC用メニューの標準スタイル */
 .pc-nav {
   display: flex;
   gap: 2rem;
@@ -207,7 +218,6 @@ header.scrolled {
 }
 .nav-reserve:hover { background: var(--terra-dk) !important; }
 
-/* ❌ PC画面ではスマホ用メニューとハンバーガーボタンを完全に非表示 */
 #site-nav { display: none; }
 .menu-trigger { display: none; }
 
@@ -239,7 +249,6 @@ header.scrolled {
 .hero-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
   background: var(--paper);
   border: 1px solid var(--linen);
   border-radius: 2px;
@@ -414,7 +423,7 @@ section { padding: 5.5rem 0; }
   display: block;
 }
 .story-img::after {
-  content: '"にこ" との旅で気づいたこと';
+  content: '愛犬「にこ」との旅で気づいたこと';
   position: absolute;
   bottom: -1px;
   left: 0; right: 0;
@@ -448,21 +457,29 @@ section { padding: 5.5rem 0; }
 }
 .feat-card {
   background: white;
-  padding: 2rem 1.8rem;
+  padding: 2.2rem 1.8rem;
   border: 1px solid var(--paper-dk);
   border-radius: 4px;
   transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s;
 }
-/* ✨追加: ホバー時に少し浮き上がるエフェクトでアフォーダンス向上 */
 .feat-card:hover {
   box-shadow: 0 6px 24px rgba(61,43,31,0.08);
   border-color: var(--linen);
   transform: translateY(-3px);
 }
-.feat-icon {
-  font-size: 1.8rem;
-  margin-bottom: 0.8rem;
-  display: block;
+/* ✨修正: 特徴カード内のアイコンをCSSベースのシンプルな丸に変更 */
+.feat-icon-num {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--terra);
+  border: 1px solid var(--terra-lt);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 .feat-card h3 {
   font-size: 0.93rem;
@@ -500,15 +517,18 @@ section { padding: 5.5rem 0; }
 }
 .labo-item {
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--paper-dk);
 }
 .labo-item:last-child { border-bottom: none; padding-bottom: 0; }
-.labo-icon {
-  font-size: 1.5rem;
+.labo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--terra);
+  margin-top: 0.6rem;
   flex-shrink: 0;
-  margin-top: 0.1rem;
 }
 .labo-item h4 {
   font-size: 0.9rem;
@@ -749,6 +769,8 @@ section { padding: 5.5rem 0; }
 .faq-inner { max-width: 720px; margin: 0 auto; padding: 0 2.5rem; }
 .faq-hd { text-align: center; margin-bottom: 3rem; }
 .faq-item { border-bottom: 1px solid var(--paper-dk); }
+
+/* 💡 指摘6: button化に伴うスタイルのリセットと調整 */
 .faq-q {
   display: flex;
   justify-content: space-between;
@@ -757,6 +779,12 @@ section { padding: 5.5rem 0; }
   cursor: pointer;
   gap: 1rem;
   user-select: none;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
 }
 .faq-q-text {
   font-size: 0.88rem;
@@ -876,7 +904,12 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+}
+/* ✨追加：SVG足跡アイコン（フッターロゴ用） */
+.footer-logo-mark svg {
+  width: 15px;
+  height: 15px;
+  fill: white;
 }
 .footer-logo-name {
   font-size: 1rem;
@@ -884,21 +917,6 @@ footer {
   color: rgba(255,255,255,0.85);
   letter-spacing: 0.15em;
 }
-.footer-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1.8rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.8rem;
-}
-.footer-nav a {
-  text-decoration: none;
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.38);
-  letter-spacing: 0.1em;
-  transition: color 0.2s;
-}
-.footer-nav a:hover { color: rgba(255,255,255,0.7); }
 
 .footer-sns {
   display: flex;
@@ -927,6 +945,22 @@ footer {
   height: 18px;
   fill: currentColor;
 }
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+}
+.footer-nav a {
+  text-decoration: none;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.38);
+  letter-spacing: 0.1em;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: rgba(255,255,255,0.7); }
 
 .footer-info {
   font-size: 0.74rem;
@@ -1033,17 +1067,15 @@ footer {
   .faq-inner { padding: 0 1.2rem; }
   .access-map iframe { height: 260px; }
   
-  /* ✨修正: スマホでのタップ領域を広げて誤タップをさらに防止 */
   .access-row .acc-val a, .footer-info a {
     padding: 0.5rem 0.8rem; margin: -0.5rem -0.8rem;
     border-radius: 4px; background: rgba(192, 116, 85, 0.05);
-    display: inline-block; /* タップ領域を確実に広げるために追加 */
+    display: inline-block;
   }
 }
 </style>
 </head>
 <body>
-
 <!-- =================================================================
      📊 Google Tag Manager (noscript)
 ================================================================== -->
@@ -1054,14 +1086,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- HEADER -->
 <header id="site-header">
   <a href="#" class="logo">
-    <div class="logo-mark" style="font-size: 0.9rem; font-weight: bold; color: var(--terra);">N</div>
+    <div class="logo-mark">
+      <!-- ✨変更: 絵文字を廃止し、滑らかなSVG足跡アイコンに統一 -->
+      <svg viewBox="0 0 24 24">
+        <path d="M12 14c-1.66 0-3 1.34-3 3 0 2 2 3 3 3s3-1 3-3c0-1.66-1.34-3-3-3zm-4.5-3c-1.1 0-2 .9-2 2s1.5 2 2.5 1c.5-.5.5-1.5-.5-2.5-.2-.2-.5-.5-.2-.5zm9 0c.3 0 0 .3-.2.5-1 1-1 2-.5 2.5 1 1 2.5 0 2.5-1s-.9-2-2-2zm-6.5-4c-.83 0-1.5.67-1.5 1.5S9.5 10 10.5 10s1.5-.67 1.5-1.5S11.33 7 10.5 7zm4 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5S15.33 7 14.5 7z"/>
+      </svg>
+    </div>
     <div class="logo-text">
       <span class="logo-ja">にこの家</span>
       <span class="logo-en">nico's house</span>
     </div>
   </a>
 
-  <!-- 💻 PC用ナビゲーション -->
   <nav class="pc-nav">
     <a href="#concept">コンセプト</a>
     <a href="#labo">住まいラボ</a>
@@ -1073,7 +1109,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#reserve" class="nav-reserve">空室を見る</a>
   </nav>
   
-  <!-- 📱 スマホ用ナビゲーション --> 
   <nav id="site-nav">
     <a href="#concept">コンセプト</a>
     <a href="#labo">住まいラボ</a>
@@ -1085,7 +1120,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#reserve" class="nav-reserve">空室を見る・予約する</a>
   </nav>
 
-  <!-- 📱 スマホ用ハンバーガーボタン -->
   <button class="menu-trigger" id="menu-trigger" aria-label="メニューを開く">
     <span></span><span></span><span></span>
   </button>
@@ -1107,11 +1141,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="#concept" class="btn-line">宿のこだわり</a>
     </div>
     <div class="hero-chips">
-      <span class="chip"> 制限なしの添い寝OK</span>
-      <span class="chip"> 完全一棟貸し貸切</span>
-      <span class="chip"> 敷地内駐車場2台無料</span>
-      <span class="chip"> 最大5名様同料金</span>
-      <span class="chip"> 羊山公園近くの自然環境</span>
+      <span class="chip">制限なしの添い寝OK</span>
+      <span class="chip">完全一棟貸し貸切</span>
+      <span class="chip">敷地内駐車場2台無料</span>
+      <span class="chip">最大5名様同料金</span>
+      <span class="chip">羊山公園近くの自然環境</span>
     </div>
   </div>
 </section>
@@ -1136,12 +1170,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           犬・猫はもちろん、うさぎ・フェレット・小動物など幅広いペットを大切な「家族」としてあたたかく迎え入れます。
         </p>
         <div class="concept-tags">
-          <span class="ctag"> 大型犬・小型犬OK</span>
-          <span class="ctag"> 猫ちゃん歓迎</span>
-          <span class="ctag"> うさぎ・フェレットOK</span>
-          <span class="ctag"> その他小動物相談可</span>
-          <span class="ctag"> マットレスで添い寝OK</span>
-          <span class="ctag"> グループでの完全貸切</span>
+          <span class="ctag">大型犬・小型犬OK</span>
+          <span class="ctag">猫ちゃん歓迎</span>
+          <span class="ctag">うさぎ・フェレットOK</span>
+          <span class="ctag">その他小動物相談可</span>
+          <span class="ctag">マットレスで添い寝OK</span>
+          <span class="ctag">グループでの完全貸切</span>
         </div>
       </div>
     </div>
@@ -1182,27 +1216,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="features-grid">
       <div class="feat-card reveal">
-        <h3 style="margin-top:0;">ペットと添い寝・同床OK</h3>
+        <!-- ✨変更: 絵文字を「01」のような洗練されたタイポグラフィに統一 -->
+        <span class="feat-icon-num">01</span>
+        <h3>ペットと添い寝・同床OK</h3>
         <p>ケージや立ち入り制限は一切ありません。マットレスを用意しておりますので、わが家のように一緒に眠ることができます。</p>
       </div>
       <div class="feat-card reveal">
-        <h3 style="margin-top:0;">多種多様なペットに対応</h3>
+        <span class="feat-icon-num">02</span>
+        <h3>多種多様なペットに対応</h3>
         <p>犬・猫をはじめ、うさぎ・フェレット・小動物まで対応。他の宿で断られてしまったご家族も、まずは気軽にご相談ください。</p>
       </div>
       <div class="feat-card reveal">
-        <h3 style="margin-top:0;">完全プライベートな一棟貸し</h3>
+        <span class="feat-icon-num">03</span>
+        <h3>完全プライベートな一棟貸し</h3>
         <p>他のお客様を気にすることなく、グループ（最大5名）だけで完全プライベートな時間と空間をお過ごしいただけます。</p>
       </div>
       <div class="feat-card reveal">
-        <h3 style="margin-top:0;">住まいラボ体験設計</h3>
+        <span class="feat-icon-num">04</span>
+        <h3>住まいラボ体験設計</h3>
         <p>滑りにくいフローリング、押し入れキャットタワー、遮熱人工芝ドッグランなど、愛犬・愛猫との住まいのアイデアを体験できます。</p>
       </div>
       <div class="feat-card reveal">
-        <h3 style="margin-top:0;">羊山公園すぐ近くの好立地</h3>
-        <p>芝桜で有名な羊山公園まで車で約3分。お散歩や、周辺のペット同伴可能な観光・カフェスポットへのアクセスも抜群です。</p>
+        <span class="feat-icon-num">05</span>
+        <h3>羊山公園すぐ近くの好立地</h3>
+        <p>芝桜で有名な羊山公園まで車で約3分。お散歩や、周辺 of ペット同伴可能な観光・カフェスポットへのアクセスも抜群です。</p>
       </div>
       <div class="feat-card reveal">
-        <h3 style="margin-top:0;">東京から90分・駐車場2台無料</h3>
+        <span class="feat-icon-num">06</span>
+        <h3>東京から90分・駐車場2台無料</h3>
         <p>関越道「花園IC」より車で約45分。ペット連れの車移動に嬉しい、敷地内の無料駐車場（2台分）を完備しています。</p>
       </div>
     </div>
@@ -1220,18 +1261,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="sec-body">「にこの家」は宿泊施設であると同時に、ペットとの理想の住まいを実際に体験できる場所でもあります。</p>
         <div class="labo-items">
           <div class="labo-item">
+            <!-- ✨変更: 絵文字をシンプルなドットデザインへ -->
+            <span class="labo-dot"></span>
             <div>
               <h4>足腰に優しい床材・フローリング</h4>
               <p>滑りにくい特殊コーティングのフローリングや起毛素材を採用。足腰が弱くなったシニア犬や元気に走り回る猫ちゃんの怪我を防ぐアイデアを体感できます。</p>
             </div>
           </div>
           <div class="labo-item">
+            <span class="labo-dot"></span>
             <div>
               <h4>押し入れ改造の室内キャットタワー</h4>
-              <p>和室の押し入れをまるごとキャットタワー＆隠れ家にDIY改造。猫ちゃんが安全に上下運動をしながらくつろげる、猫目線の遊び心ある設計です。</p>
+              <p>和室 of 押し入れをまるごとキャットタワー＆隠れ家にDIY改造。猫ちゃんが安全に上下運動をしながらくつろげる、猫目線の遊び心ある設計です。</p>
             </div>
           </div>
           <div class="labo-item">
+            <span class="labo-dot"></span>
             <div>
               <h4>年中遊べる遮熱人工芝ドッグラン</h4>
               <p>夏でも熱を吸収しにくく、肉球が熱くなりにくい特殊な遮熱人工芝のドッグラン。高めのウッドフェンス付きでノーリードで安心安全に走らせられます。</p>
@@ -1301,7 +1346,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     <div class="features-grid" style="margin-bottom: 2rem;">
       <div class="feat-card reveal">
-        <span class="feat-icon">🐕</span>
+        <!-- ✨変更: 各カードから絵文字アイコンを排除し、シンプルな英語表記のミニタイトルに変更 -->
+        <span class="sec-eyebrow" style="font-size: 0.65rem; margin-bottom: 0.8rem; display: block;">For Dogs</span>
         <h3>ワンちゃん用アメニティ</h3>
         <p style="font-size: 0.85rem; line-height: 2;">
           ・ワイドサイズペットシーツ<br>
@@ -1312,7 +1358,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </p>
       </div>
       <div class="feat-card reveal">
-        <span class="feat-icon">🐈</span>
+        <span class="sec-eyebrow" style="font-size: 0.65rem; margin-bottom: 0.8rem; display: block;">For Cats & Others</span>
         <h3>猫ちゃん・小動物用アメニティ</h3>
         <p style="font-size: 0.85rem; line-height: 2;">
           ・押し入れ内蔵キャットタワー<br>
@@ -1323,7 +1369,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </p>
       </div>
       <div class="feat-card reveal">
-        <span class="feat-icon">🛁</span>
+        <span class="sec-eyebrow" style="font-size: 0.65rem; margin-bottom: 0.8rem; display: block;">For Humans</span>
         <h3>人間用アメニティ・設備</h3>
         <p style="font-size: 0.85rem; line-height: 2;">
           ・シャンプー、コンディショナー、ボディソープ<br>
@@ -1404,7 +1450,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="area-dist">車で約3〜5分（約1.5km）</p>
           <h4>羊山公園</h4>
           <p>芝桜の丘で全国的にも有名。見晴らしの丘からは、武甲山と秩父市街が一望できる絶景のお散歩ルートです。</p>
-          <span class="area-pet">リード着用でお散歩可</span>
+          <!-- ✨変更: バッジから絵文字「🐾」を削除 -->
+          <span class="area-pet">リード着用でわんちゃんお散歩OK</span>
         </div>
       </div>
       <div class="area-card reveal">
@@ -1413,7 +1460,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="area-dist">車で約3分（約1km）</p>
           <h4>道の駅 ちちぶ</h4>
           <p>秩父の特産品やお土産、B級グルメが集結するスポット。外には美味しい立ち食いそばや水汲み場もあります。</p>
-          <span class="area-pet">屋外テラス等のみペット可</span>
+          <span class="area-pet">屋外テラススペース等のみペットOK</span>
         </div>
       </div>
       <div class="area-card reveal">
@@ -1422,7 +1469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="area-dist">車で約5分（約1.8km）</p>
           <h4>doggie cafe SMOOCH</h4>
           <p>ペット愛に溢れる古民家風のドッグカフェ。全犬種・猫ちゃん店内同伴OKで、ヘルシーな犬用メニューも大変人気です。</p>
-          <span class="area-pet">全犬種・猫ちゃん店内同伴可</span>
+          <span class="area-pet">全犬種・猫ちゃんも店内同伴OK</span>
         </div>
       </div>
       <div class="area-card reveal">
@@ -1431,7 +1478,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="area-dist">車で約15分（約7〜8km）</p>
           <h4>秩父ミューズパーク</h4>
           <p>広大な敷地の中に、約3kmにわたる美しいイチョウ並木道「スカイロード」があります。愛犬との朝夕のお散歩に最適なコースです。</p>
-          <span class="area-pet">リード着用でお散歩可</span>
+          <span class="area-pet">リード着用でお散歩OK</span>
         </div>
       </div>
       <div class="area-card reveal">
@@ -1440,7 +1487,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="area-dist">車で約25〜30分（約15km）</p>
           <h4>長瀞・岩畳 ＆ ライン下り</h4>
           <p>美しい自然が織りなす大迫力の「岩畳」の上をリードをつけてのんびりお散歩。川下りのライン下りも、ペット同伴乗船が可能です。</p>
-          <span class="area-pet">岩畳散歩可 / ライン下りはケージ要</span>
+          <span class="area-pet">岩畳お散歩OK / ライン下りはケージ必要</span>
         </div>
       </div>
       <div class="area-card reveal">
@@ -1449,7 +1496,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <p class="area-dist">車で約30分（約16km）</p>
           <h4>宝登山ロープウェイ</h4>
           <p>長瀞観光に人気のロープウェイ。梅や桜など四季折々の花が咲き誇る宝登山山頂へ、小型犬を連れて登ることができます。</p>
-          <span class="area-pet">10kg未満・ハードケージ必要</span>
+          <span class="area-pet">10kg未満・頭から隠れるハードケージ必要</span>
         </div>
       </div>
     </div>
@@ -1511,36 +1558,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="sec-eyebrow">FAQ</p>
       <h2 class="sec-title">よくあるご質問</h2>
     </div>
+    
     <div class="faq-item reveal">
-      <div class="faq-q" onclick="toggleFaq(this)">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
         <span class="faq-q-text">どんな種類のペットを何頭まで連れていけますか？</span>
         <span class="faq-icon">+</span>
-      </div>
+      </button>
       <div class="faq-a">室内飼いされている犬（小型・中型・大型）、猫、うさぎ、フェレット、その他小動物であれば何頭でもご宿泊いただけます。頭数制限や、犬のサイズ（大型犬）による特別追加料金はありません。ご予約時に種類と頭数を事前にお知らせください。</div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q" onclick="toggleFaq(this)">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
         <span class="faq-q-text">ペットはベッドに上がってもいいですか？添い寝できますか？</span>
         <span class="faq-icon">+</span>
-      </div>
+      </button>
       <div class="faq-a">はい、もちろんです！寝室のロータイプマットレスへの立ち入り制限は一切ありません。ケージで眠らせる強制もありませんので、おうちと同じようにみんなで川の字になって添い寝をしていただけます。これが「にこの家」最大のこだわりです。</div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q" onclick="toggleFaq(this)">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
         <span class="faq-q-text">周辺にペットと一緒に食事を楽しめるレストランはありますか？</span>
         <span class="faq-icon">+</span>
-      </div>
+      </button>
       <div class="faq-a">はい、車で5分程度の距離にある古民家カフェ「doggie cafe SMOOCH」など、犬・猫同伴で入れる素敵なお店がいくつかあります。また、にこの家のキッチンにはIHコンロや冷蔵庫、食器類が完備されていますので、地元の道の駅等で秩父の食材を買い出して、宿で調理して食べることも人気です。</div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q" onclick="toggleFaq(this)">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
         <span class="faq-q-text">近くに、夜間対応などの動物病院はありますか？</span>
         <span class="faq-icon">+</span>
       </div>
       <div class="faq-a">万が一の体調不良の際もご安心いただけるよう、秩父市内にある、ペットにやさしい複数の動物病院の連絡先をウェルカムガイド（宿内の手引き冊子）に掲載しております。緊急時やご不安な際はお電話でもお気軽にお問い合わせください。</div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q" onclick="toggleFaq(this)">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
         <span class="faq-q-text">連泊の割引やワーケーション利用は可能ですか？</span>
         <span class="faq-icon">+</span>
       </div>
@@ -1556,19 +1604,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p>特に週末や大型連休はご予約が非常に埋まりやすくなっております。<br>ご宿泊やご予約についてのお問い合わせもお気軽にメール・お電話ください。</p>
   <div class="reserve-btns">
     <a href="https://nicoshouse.airhost.co/ja" target="_blank" rel="noopener" class="btn-white">Airbnbで空室を見る</a>
-    <a href="tel:09038188591" class="btn-line-w prevent-desktop-link">📞 090-3818-8591</a>
-    <a href="mailto:nico.ishikawa2525@gmail.com" class="btn-line-w prevent-desktop-link">✉ メールで直接問い合わせ</a>
+    <!-- ✨変更: 電話とメールの絵文字「📞」「✉」を削除し、テキストで洗練された表現に変更 -->
+    <a href="tel:09038188591" class="btn-line-w prevent-desktop-link">電話で問い合わせ 090-3818-8591</a>
+    <a href="mailto:nico.ishikawa2525@gmail.com" class="btn-line-w prevent-desktop-link">メールで直接問い合わせ</a>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
-    <span class="footer-logo-name" style="letter-spacing: 0.1em;">にこの家</span>
+    <div class="footer-logo-mark">
+      <!-- ✨変更: フッターのロゴも同様のSVG足跡アイコンに統一 -->
+      <svg viewBox="0 0 24 24">
+        <path d="M12 14c-1.66 0-3 1.34-3 3 0 2 2 3 3 3s3-1 3-3c0-1.66-1.34-3-3-3zm-4.5-3c-1.1 0-2 .9-2 2s1.5 2 2.5 1c.5-.5.5-1.5-.5-2.5-.2-.2-.5-.5-.2-.5zm9 0c.3 0 0 .3-.2.5-1 1-1 2-.5 2.5 1 1 2.5 0 2.5-1s-.9-2-2-2zm-6.5-4c-.83 0-1.5.67-1.5 1.5S9.5 10 10.5 10s1.5-.67 1.5-1.5S11.33 7 10.5 7zm4 0c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5S15.33 7 14.5 7z"/>
+      </svg>
+    </div>
+    <span class="footer-logo-name">にこの家</span>
   </div>
   
   <div class="footer-sns">
-    <a href="#" target="_blank" rel="noopener" aria-label="Instagram" style="font-size: 0.8rem;">Instagram</a>
+    <a href="https://www.instagram.com/niconoie_chichibu/" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+    </a>
   </div>
 
   <nav class="footer-nav">
@@ -1589,14 +1646,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <p class="footer-copy">© 2025 にこの家 / nico's house</p>
 </footer>
 
-<!-- ⚙️ JavaScript (スクリプトをファイル内に統合) -->
+<!-- ⚙️ JavaScript -->
 <script>
 // FAQの開閉制御
 function toggleFaq(el) {
   const item = el.closest('.faq-item');
   const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
+  
+  // 他の開いているFAQを閉じる
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    const btn = i.querySelector('.faq-q');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  });
+
+  // クリックされたものが開いていなかった場合、開く
+  if (!isOpen) {
+    item.classList.add('open');
+    el.setAttribute('aria-expanded', 'true');
+  }
 }
 
 // スクロール時のアニメーション表示 (Intersection Observer)
@@ -1626,7 +1694,7 @@ if (menuTrigger && siteNav) {
     siteNav.classList.toggle('is-open');
   });
 
-  // メニュー内のリンクをクリックしたら自動で閉じる（セクション移動時）
+  // メニュー内のリンクをクリックしたら自動で閉じる
   siteNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       menuTrigger.classList.remove('is-active');
@@ -1636,9 +1704,20 @@ if (menuTrigger && siteNav) {
 }
 
 // ==========================================
-// 📞✉️ 電話・メールの誤タップ / PC動作制御
+// 電話・メールの誤タップ / PC動作制御
+// ✨変更: コピートースト内の絵文字（📞、✉）も削除
 // ==========================================
-function copyToClipboard(text, successMessage) {
+async function copyToClipboard(text, successMessage) {
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast(successMessage);
+      return;
+    } catch (err) {
+      console.warn('Clipboard API failed, fallback to execCommand:', err);
+    }
+  }
+  
   const tempTextArea = document.createElement('textarea');
   tempTextArea.value = text;
   tempTextArea.style.position = 'fixed';
@@ -1656,7 +1735,6 @@ function copyToClipboard(text, successMessage) {
   } catch (err) {
     console.error('コピー処理中にエラーが発生しました:', err);
   }
-  
   document.body.removeChild(tempTextArea);
 }
 
@@ -1684,10 +1762,10 @@ document.querySelectorAll('.prevent-desktop-link').forEach(link => {
       const href = this.getAttribute('href');
       if (href.startsWith('tel:')) {
         const phoneNum = href.replace('tel:', '');
-        copyToClipboard(phoneNum, '📞 電話番号をコピーしました: ' + phoneNum);
+        copyToClipboard(phoneNum, '電話番号をコピーしました: ' + phoneNum);
       } else if (href.startsWith('mailto:')) {
         const emailAddress = href.replace('mailto:', '');
-        copyToClipboard(emailAddress, '✉️ メールアドレスをコピーしました: ' + emailAddress);
+        copyToClipboard(emailAddress, 'メールアドレスをコピーしました: ' + emailAddress);
       }
     }
   });
